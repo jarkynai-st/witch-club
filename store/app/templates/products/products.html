@@ -1,0 +1,32 @@
+{% extends 'products/base.html' %}
+{% block content %}
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"><table class="table">
+
+
+<div class="container pb-5 mb-sm-1">
+    <!-- Categories grid-->
+    <div class="row">
+        <!-- Category-->
+        {% for product in products %}
+        <div class="col-md-4 col-sm-6">
+            <div class="card border-0 mb-grid-gutter">
+                <a class="card-img-tiles" href="shop-style1-ls.html">
+                    <div class="main-img"><img src="{{ product.image.url }}" alt="Pizza" width="320" height="350"></div>
+                </a>
+                <div class="card-body border mt-n1 py-4 text-center">
+                    <h2 class="h5 mb-1">{{ product.name }}</h2>
+                    <span class="d-block mb-3 font-size-xs text-muted">
+                        <span class="font-weight-semibold">{{ product.description }}</span></span>
+                        <span class="font-weight-semibold">{{ product.size }}</span>
+                        <br>
+                        <span class="font-weight-semibold">{{ product.price }}</span>
+                    <a class="btn btn-pill btn-outline-primary btn-sm" href="{% url 'create_order' product.id %}">Add to cart</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
