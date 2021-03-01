@@ -42,9 +42,7 @@ def sign_up(request):
     return render(request,'products/register.html',context)
 
 
-def homepage(request):
-    products = Product.objects.all()
-    return render(request,'products/products.html',{"products":products})
+
 
 
 def sign_in(request):
@@ -96,7 +94,8 @@ def homepage(request):
     products = Product.objects.all()
     filters = ProductFilter(request.GET,queryset=products)
     products = filters.qs
-    return render(request,'products/products.html',{"products":products,'filters':filters})
+    contacts = Contact.objects.all()
+    return render(request,'products/products.html',{"products":products,'filters':filters,'contacts':contacts})
 
 
 def activate(request, uidb64, token):
